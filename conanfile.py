@@ -2,8 +2,7 @@ from conans import ConanFile
 
 
 class ZMQCPPConan(ConanFile):
-	""" ONGOING WORK, tested in Win VS 12
-	"""
+    """ ONGOING WORK, tested in Win VS 12 """
     name = "zmqcpp"
     version = "4.1.1"
     url = "https://github.com/memsharded/conan-zmqcpp.git"
