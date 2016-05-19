@@ -1,21 +1,7 @@
-import platform
-import os
-
-
-def system(command):
-    retcode = os.system(command)
-    if retcode != 0:
-        raise Exception("Error while executing:\n\t %s" % command)
+from conan.packager import ConanMultiPackager
 
 
 if __name__ == "__main__":
-    system('conan export memsharded/testing')
-
-    if platform.system() == "Windows":
-        system('conan test -s compiler="Visual Studio" -s compiler.version=12 -s build_type=Debug '
-                          '-s compiler.runtime=MDd')
-        system('conan test -s compiler="Visual Studio" -s compiler.version=12 '
-                          '-s build_type=Release -s compiler.runtime=MD')
-    else:
-        system('conan test -s compiler="gcc" -s build_type=Debug')
-        system('conan test -s compiler="gcc" -s build_type=Release')
+    builder = ConanMultiPackager(username="memsharded", channel="testing")
+    builder.add_common_builds(shared_option_name="ZMQ:shared")
+    builder.run()

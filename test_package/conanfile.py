@@ -4,12 +4,12 @@ import os
 
 class ZMQCppTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    requires = "zmqcpp/4.1.1@memsharded/testing"
+    requires = "zmqcpp/4.1.1@memsharded/stable"
     generators = "cmake"
 
     def build(self):
         cmake = CMake(self.settings)
-        self.run('cmake . %s' % cmake.command_line)
+        self.run('cmake %s %s' % (self.conanfile_directory, cmake.command_line))
         self.run("cmake --build . %s" % cmake.build_config)
 
     def imports(self):
