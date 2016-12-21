@@ -6,8 +6,11 @@ class CPPZMQConan(ConanFile):
     version = "4.2.0"
     sha1 = "6c9103433f978e2c190c806a98c53f5cee4744f9"  # For 4.2.0
     url = "https://github.com/memsharded/conan-zmqcpp.git"
-    requires = "libzmq/4.2.0@memsharded/stable"
+    requires = "libzmq/4.2.0@memsharded/testing"
     source_dir = "cppzmq"
+    license = "MIT"
+    description = """Simple C++ wrapper to libzmq, from https://github.com/zeromq/cppzmq
+    """
 
     def source(self):
         self.run_command("git clone https://github.com/zeromq/cppzmq.git")
